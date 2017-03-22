@@ -1,27 +1,11 @@
-# Module 14: Git Branches and Collaboration
+# Git Branches
 
 While `git` is great for uploading and downloading code, its true benefits are its ability to support _reversability_ (e.g., undo) and _collaboration_ (working with other people). In order to effectively utilize these capabilities, you need to understand git's **branching model**, which is central to how the program manages different versions of code.
 
 This module will cover how to work with **branches** with git and GitHub, including using them to work on different features simultaneously and to undo previous changes. It will also discuss how to use branches to support different _collaborative workflows_, allowing multiple people to work on code in the same repository.
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Contents**
+Helpful links:
 
-- [Resources](#resources)
-- [Git Branches](#git-branches)
-- [Merging](#merging)
-  - [Merge Conflicts](#merge-conflicts)
-- [Undoing Changes](#undoing-changes)
-- [GitHub and Branches](#github-and-branches)
-  - [GitHub Pages](#github-pages)
-- [Collaborative Workflows](#collaborative-workflows)
-  - [Repository Setup](#repository-setup)
-  - [Feature Branches](#feature-branches)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-## Resources
 - [Git and GitHub in Plain English](https://red-badger.com/blog/2016/11/29/gitgithub-in-plain-english)
 - [Atlassian Git Branches Tutorial](https://www.atlassian.com/git/tutorials/using-branches)
 - [Git Branching (Official Documentation)](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
@@ -34,7 +18,7 @@ This module will cover how to work with **branches** with git and GitHub, includ
 ## Git Branches
 So far, you've been using git to create a _linear sequence_ of commits: they are all in a line, one after another).
 
-![Commit sequence](img/commit-sequence.gif)
+![Commit sequence](m17-imgs/commit-sequence.gif)
 
 Each commit has a message associated with it (that you can see with `git log --online`), as well as a unique [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hash (the random numbers and letters), which can be used to identify that commit, like an "id number".
 
@@ -42,7 +26,7 @@ But sometimes we save commits in a _non-linear_ sequence. Perhaps we want to try
 
 To do this, we use a feature of git called **branching** (because we can have commits that "branch off" from a line of development):
 
-![Branching example](img/branching.gif)
+![Branching example](m17-imgs/branching.gif)
 
 For example, we might have a primary branch (called the `master` branch), and we decide we want to try an experiment. We _split off_ a new branch (called for example `experiment`), which saves some funky changes to our code. But then we decide to make further changes to our main development line, adding more commits to `master` that ignore the changes stored in the `experiment` branch. We can develop `master` and `experiment` simultaneously, making changes to each version of the code. We can even branch off further versions (e.g., a `bugfix` to fix a problem) if we wish. And once we decide we're happy with the code added to both versions, we can **merge** them back together, so that the `master` branch now contains all the changes that were made on the `experiment` branch. If we decided that the `experiment` didn't work out, we can simply delete those set of changes without ever having messed with our "core" `master` branch.
 
@@ -86,7 +70,7 @@ Once you've checked out a particular branch, any _new_ commits from this point o
 
 - **Important** checking out a branch will "reset" your code to whatever it looked like when you made that commit. Switch back and forth between branches and watch your code change!
 
-![HEAD switching diagram](img/checkout-head.gif)
+![HEAD switching diagram](m17-imgs/checkout-head.gif)
 
 Note that you can only check out code if the _current working directory_ has no uncommitted changes. This means you'll need to `commit` any changes to the current branch before you `checkout` another. If you want to "save" your changes but don't want to commit to them, you can also use git's ability to temporarily [stash](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning) changes.
 
@@ -123,7 +107,7 @@ Merging is a regular occurrence when working with branches. But consider the fol
 
 In this situation, you are trying to _merge two different changes to the same line of code_, and thus should be shown an error on the command-line:
 
-![Merge conflict error](img/merge-conflict-error.png)
+![Merge conflict error](m17-imgs/merge-conflict-error.png)
 
 This is called a **merge conflict**. A merge conflict occurs when two commits from different branches include different changes to the same code (they conflict). Git is just a simple computer program, and has no way of knowing which version to keep ("are kitties better than puppies? How should I know?!").
 
@@ -131,7 +115,7 @@ Since git can't determine which version of the code to keep, it ___stops the mer
 
 In order to **resolve the merge conflict**, you will need to edit the file (code) so that you pick which version to keep. Git adds "code" to the file to indicate where you need to make a decision about which code is better:
 
-![Merge conflict](img/merge-conflict.png)
+![Merge conflict](m17-imgs/merge-conflict.png)
 
 In order to resolve the conflict:
 
@@ -307,7 +291,7 @@ The Feature Branch Workflow uses a **centralized repository** stored on GitHub&m
 
 In order to make sure everyone is able to `push` to the repository, whoever creates the repo will need to [**add the other team members as collaborators**](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/). You can do this under the **Settings** tab:
 
-![Add collaborator menu](img/add-collaborator.png)
+![Add collaborator menu](m17-imgs/add-collaborator.png)
 
 Once you've added everyone to the GitHub repository, **each team member** will need to **`clone`** the repository to their local machine to work on the code individually. Collaborators can then `push` any changes they make to the central repository, and `pull` and changes made by others.
 
