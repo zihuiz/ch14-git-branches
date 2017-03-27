@@ -92,7 +92,7 @@ This command will merge `other_branch` **into the current branch**. So if you wa
 
 - Note that the `rebase` command will perform a similar operation, but without creating a new "merge" commit--it simply takes the commits from one branch and attaches them to the end of the other. This effectively **changes history**, since it is no longer clear where the branching occurred. From an archival and academic view, we never want to "destroy history" and lose a record of changes that were made. History is important: don't screw with it! Thus I recommend you _avoid_ rebasing and stick with merging.
 
-To practice creating and merging branches, see [exercise-1](exercise-1).
+To practice creating and merging branches, see [exercise-1](http://github.com/info201-s17/m17-git-branches/tree/master/exercise-1).
 
 
 ### Merge Conflicts
@@ -136,7 +136,7 @@ In order to resolve the conflict:
 
 **Merge conflicts are expected**. You didn't do something wrong if one occurs! Don't worry about getting one or try to avoid them, just resolve the conflict, fix the "bug" that has appeared, and move on with your life.
 
-To practice resolving merge conflicts, see [exercise-2](exercise-2).
+To practice resolving merge conflicts, see [exercise-2](http://github.com/info201-s17/m17-git-branches/tree/master/exercise-2).
 
 ## Undoing Changes
 One of the key benefits of version control systems is **reversibility**: the ability to "undo" a mistake (and we all make lots of mistakes when programming!) Git gives us two basic ways that we can go back and fix a mistake we've made previously:
